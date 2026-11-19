@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080812">
+<title>OVERTOOLS · Centro legal</title>
+<style>
+:root{color-scheme:dark;--bg:#080812;--panel:#111225;--line:#28294a;--blue:#438bff;--purple:#9b5cff;--muted:#a8a9c4}
+*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 15% 5%,#17234a 0,transparent 38%),radial-gradient(ellipse at 90% 20%,#32164c 0,transparent 35%),var(--bg);color:#f7f7ff;font:16px/1.6 system-ui,Segoe UI,Arial,sans-serif}
+main{width:min(900px,92%);margin:0 auto;padding:64px 0}.brand{text-align:center;margin-bottom:28px}.mark{width:68px;height:68px;margin:auto auto 14px;border-radius:22px;display:grid;place-items:center;font-weight:900;font-size:27px;background:linear-gradient(135deg,var(--blue),var(--purple));box-shadow:0 0 35px #7654ff55}.brand h1{margin:0;font-size:clamp(30px,6vw,46px);letter-spacing:3px}.brand p{margin:5px 0;color:var(--muted)}.panel{background:#111225eF;border:1px solid var(--line);border-radius:24px;padding:clamp(22px,5vw,42px);box-shadow:0 18px 70px #0008}.panel h2{margin:0 0 8px;font-size:25px}.intro{color:var(--muted);margin-top:0}.login{display:block;text-align:center;text-decoration:none;color:white;font-weight:750;padding:14px 18px;border-radius:13px;background:linear-gradient(100deg,#397cff,#8750ed);box-shadow:0 8px 28px #654cff44;margin:24px 0 28px}.login:hover{filter:brightness(1.12)}.docs{display:grid;grid-template-columns:1fr 1fr;gap:14px}.doc{border:1px solid var(--line);border-radius:15px;padding:18px;background:#0b0d1c}.doc h3{margin:0 0 6px}.doc p{margin:0;color:var(--muted);font-size:14px}footer{text-align:center;color:#8587a8;font-size:13px;margin-top:24px}#notice{color:#bfc9ff;text-align:center;min-height:24px;font-size:14px}@media(max-width:600px){main{padding:36px 0}.docs{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main>
+<header class="brand"><div class="mark">OT</div><h1>OVERTOOLS</h1><p>Centro legal oficial</p></header>
+<section class="panel">
+<h2>Bienvenido</h2>
+<p class="intro">Consulta los documentos legales y accede con tu cuenta de Discord.</p>
+<a class="login" href="/.netlify/functions/auth-start">Continuar con Discord</a>
+<div id="notice" aria-live="polite"></div>
+<div class="docs">
+<article class="doc"><h3>Términos de servicio</h3><p>Normas y condiciones para utilizar OVERTOOLS y sus servicios.</p></article>
+<article class="doc"><h3>Política de privacidad</h3><p>Información sobre los datos utilizados durante el acceso con Discord.</p></article>
+</div>
+</section>
+<footer>© <span id="year"></span> OVERTOOLS · Todos los derechos reservados</footer>
+</main>
+<script>
+document.getElementById('year').textContent=new Date().getFullYear();
+const p=new URLSearchParams(location.search);
+if(p.get('login')==='success')document.getElementById('notice').textContent='Sesión autorizada. Ya puedes volver a Discord.';
+if(p.get('error'))document.getElementById('notice').textContent='No se pudo completar el acceso. Inténtalo de nuevo.';
+</script>
+</body></html>

@@ -1,0 +1,30 @@
+OVERTOOLS · Centro legal + acceso Discord
+
+ARCHIVOS
+- index.html: página principal.
+- netlify.toml: configuración de Netlify.
+- netlify/functions/auth-start.mjs: inicia el acceso OAuth2.
+- netlify/functions/auth-callback.mjs: valida el acceso y solicita unir al usuario al servidor.
+
+CONFIGURACIÓN EN NETLIFY
+En Site configuration > Environment variables, añade:
+DISCORD_CLIENT_ID = ID de la aplicación Discord
+DISCORD_CLIENT_SECRET = Client Secret de OAuth2 (secreto; nunca lo publiques)
+DISCORD_BOT_TOKEN = token del bot (secreto; nunca lo publiques)
+DISCORD_GUILD_ID = 1539278510156152924
+
+Netlify proporciona automáticamente URL para sitios desplegados. Si no lo hace en tu contexto, configura SITE_URL con la URL https:// de tu sitio.
+
+DISCORD DEVELOPER PORTAL
+En OAuth2 > General, registra exactamente:
+https://t-rminos-de-privacidad-de-overtools.netlify.app/.netlify/functions/auth-callback
+
+Scopes utilizados: identify y guilds.join.
+
+IMPORTANTE
+- El bot debe estar dentro del servidor indicado.
+- El usuario debe autorizar la solicitud de Discord.
+- El bot necesita acceso al servidor y la aplicación debe cumplir los requisitos de Discord para añadir miembros.
+- No pongas DISCORD_CLIENT_SECRET ni DISCORD_BOT_TOKEN en archivos públicos, HTML, GitHub público ni mensajes.
+- Después de agregar variables, vuelve a desplegar el sitio en Netlify.
+- Esta página es una plantilla inicial: completa y publica el texto legal definitivo de OVERTOOLS antes de usarla como documentación legal oficial.
