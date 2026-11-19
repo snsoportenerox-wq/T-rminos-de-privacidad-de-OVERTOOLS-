@@ -1,0 +1,22 @@
+OVERTOOLS · Actualización del centro legal
+
+Incluye:
+- index.html: portada con inicio de sesión y cuenta de Discord.
+- terms.html: términos y condiciones de uso.
+- privacy.html: política de privacidad.
+- netlify/functions: inicio OAuth2 y callback que solicita unir la cuenta autorizada al servidor.
+- netlify.toml: configuración de funciones.
+
+Conserva estas variables en Netlify:
+DISCORD_CLIENT_ID
+DISCORD_CLIENT_SECRET
+DISCORD_BOT_TOKEN
+DISCORD_GUILD_ID = 1539278510156152924
+
+En Discord Developer Portal > OAuth2 > General, el Redirect URI debe ser:
+https://t-rminos-de-privacidad-de-overtools.netlify.app/.netlify/functions/auth-callback
+
+Después de reemplazar los archivos, publica un nuevo deploy en Netlify.
+El bot debe estar dentro del servidor. El usuario debe autorizar identify y guilds.join.
+
+NOTA LEGAL: los textos incluidos son una base inicial. Antes de considerarlos documentos legales definitivos, revisa su contenido y añade un contacto oficial de OVERTOOLS, así como cualquier dato real sobre almacenamiento, plazos y tratamiento que corresponda a tu servicio.
